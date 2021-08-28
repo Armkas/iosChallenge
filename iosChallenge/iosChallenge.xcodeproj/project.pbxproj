@@ -16,6 +16,8 @@
 		B45B496826D7EA5100165037 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45B496626D7EA5100165037 /* LaunchScreen.storyboard */; };
 		B45B497326D7EA5100165037 /* iosChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B497226D7EA5100165037 /* iosChallengeTests.swift */; };
 		B45B497E26D7EA5100165037 /* iosChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B497D26D7EA5100165037 /* iosChallengeUITests.swift */; };
+		B4E0FCB926DA291B00470E44 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E0FCB826DA291B00470E44 /* ListCell.xib */; };
+		B4E0FCBC26DA29BA00470E44 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCBB26DA29BA00470E44 /* ListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		B45B497926D7EA5100165037 /* iosChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45B497D26D7EA5100165037 /* iosChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosChallengeUITests.swift; sourceTree = "<group>"; };
 		B45B497F26D7EA5100165037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4E0FCB826DA291B00470E44 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		B4E0FCBB26DA29BA00470E44 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		B45B495726D7EA5000165037 /* iosChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				B4E0FCBA26DA29A400470E44 /* Cell */,
 				B45B495826D7EA5000165037 /* AppDelegate.swift */,
 				B45B495A26D7EA5000165037 /* SceneDelegate.swift */,
 				B45B495C26D7EA5000165037 /* ViewController.swift */,
@@ -129,6 +134,15 @@
 				B45B497F26D7EA5100165037 /* Info.plist */,
 			);
 			path = iosChallengeUITests;
+			sourceTree = "<group>";
+		};
+		B4E0FCBA26DA29A400470E44 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B4E0FCB826DA291B00470E44 /* ListCell.xib */,
+				B4E0FCBB26DA29BA00470E44 /* ListCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45B496826D7EA5100165037 /* LaunchScreen.storyboard in Resources */,
+				B4E0FCB926DA291B00470E44 /* ListCell.xib in Resources */,
 				B45B496526D7EA5100165037 /* Assets.xcassets in Resources */,
 				B45B496026D7EA5000165037 /* Main.storyboard in Resources */,
 			);
@@ -264,6 +279,7 @@
 				B45B495D26D7EA5000165037 /* ViewController.swift in Sources */,
 				B45B495926D7EA5000165037 /* AppDelegate.swift in Sources */,
 				B45B495B26D7EA5000165037 /* SceneDelegate.swift in Sources */,
+				B4E0FCBC26DA29BA00470E44 /* ListCell.swift in Sources */,
 				B45B496326D7EA5000165037 /* iosChallenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

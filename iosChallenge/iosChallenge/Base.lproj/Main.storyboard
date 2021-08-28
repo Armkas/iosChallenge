@@ -16,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m20-iP-BFa">
+                                <rect key="frame" x="177" y="92" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAe-Ec-VGf" userLabel="Key In Text Field">
                                 <rect key="frame" x="69" y="139" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -54,6 +61,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currencyDataLabel" destination="m20-iP-BFa" id="yHA-S6-P0C"/>
                         <outlet property="fromButton" destination="tf9-Sv-KjK" id="RIn-qX-uoZ"/>
                         <outlet property="inputTestField" destination="MAe-Ec-VGf" id="R67-Pe-764"/>
                         <outlet property="resultLabel" destination="78E-XC-Dd2" id="1HA-Cj-o27"/>

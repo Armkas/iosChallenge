@@ -8,7 +8,17 @@
 import Foundation
 
 internal struct Rate {
-    var sourceCountry: String
-    var targetCountry: String
+    var source: String
+    var target: String
     var value: Double
+}
+
+internal struct Currency {
+    var source: String
+    var timestamp: Int
+    var privacy: String
+    var terms: String
+    var success: Bool
+    var lastUpdate: Date
+    var quotes: [Rate]
 }

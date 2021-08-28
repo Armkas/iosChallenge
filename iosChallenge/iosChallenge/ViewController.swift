@@ -8,8 +8,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     
+    private var currencyData: Currency? = nil {
+        didSet {
+            self.updateData()
+        }
+    }
+
+    @IBOutlet weak var currencyDataLabel: UILabel!
     @IBOutlet weak var inputTestField: UITextField!
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var toButton: UIButton!
@@ -26,6 +32,18 @@ class ViewController: UIViewController {
         fromButton.setTitle("USD", for: .normal)
         fromButton.setTitle("JPY", for: .normal)
         tableView.register(ListCell.self, forCellReuseIdentifier: "ListCell")
+    }
+    
+    func updateData() {
+        let dateString = currencyData?.timestamp.toDateString()
+        currencyDataLabel.text = "Currency update time: \(dateString ?? "?????")"
+        inputTestField.text = "1.0"
+        fromButton.setTitle(currencyData?.source, for: .normal)
+
+        if let rate = currencyData?.quotes.first(where: {$0.target == "JPY"}) {
+            resultLabel.text = "= \(rate.value) JPY"
+        }
+        tableView.reloadData()
     }
 
 }

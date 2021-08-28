@@ -19,7 +19,7 @@ internal final class ListCell: UITableViewCell {
     }
     
     func bind(rate: Rate) {
-        countryLabel.text = rate.targetCountry
+        countryLabel.text = rate.target
         rateLabel.text = "\(rate.value)"
     }
 

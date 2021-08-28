@@ -1,5 +1,5 @@
 //
-//  ExtensionInt.swift
+//  Int.swift
 //  iosChallenge
 //
 //  Created by puyue on R 3/08/28.

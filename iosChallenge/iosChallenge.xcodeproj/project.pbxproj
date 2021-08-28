@@ -19,7 +19,7 @@
 		B4E0FCB926DA291B00470E44 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E0FCB826DA291B00470E44 /* ListCell.xib */; };
 		B4E0FCBC26DA29BA00470E44 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCBB26DA29BA00470E44 /* ListCell.swift */; };
 		B4E0FCBF26DA2C8A00470E44 /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCBE26DA2C8A00470E44 /* GlobalModel.swift */; };
-		B4E0FCC226DA503900470E44 /* ExtensionInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCC126DA503900470E44 /* ExtensionInt.swift */; };
+		B4E0FCC226DA503900470E44 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCC126DA503900470E44 /* Int.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,7 @@
 		B4E0FCB826DA291B00470E44 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		B4E0FCBB26DA29BA00470E44 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		B4E0FCBE26DA2C8A00470E44 /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
-		B4E0FCC126DA503900470E44 /* ExtensionInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionInt.swift; sourceTree = "<group>"; };
+		B4E0FCC126DA503900470E44 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +162,7 @@
 		B4E0FCC026DA500F00470E44 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B4E0FCC126DA503900470E44 /* ExtensionInt.swift */,
+				B4E0FCC126DA503900470E44 /* Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 				B45B495D26D7EA5000165037 /* ViewController.swift in Sources */,
 				B45B495926D7EA5000165037 /* AppDelegate.swift in Sources */,
 				B4E0FCBF26DA2C8A00470E44 /* GlobalModel.swift in Sources */,
-				B4E0FCC226DA503900470E44 /* ExtensionInt.swift in Sources */,
+				B4E0FCC226DA503900470E44 /* Int.swift in Sources */,
 				B45B495B26D7EA5000165037 /* SceneDelegate.swift in Sources */,
 				B4E0FCBC26DA29BA00470E44 /* ListCell.swift in Sources */,
 				B45B496326D7EA5000165037 /* iosChallenge.xcdatamodeld in Sources */,

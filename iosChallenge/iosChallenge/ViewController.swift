@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     func setupView() {
         fromButton.setTitle("USD", for: .normal)
-        fromButton.setTitle("JPY", for: .normal)
+        toButton.setTitle("JPY", for: .normal)
         tableView.register(ListCell.self, forCellReuseIdentifier: "ListCell")
     }
     

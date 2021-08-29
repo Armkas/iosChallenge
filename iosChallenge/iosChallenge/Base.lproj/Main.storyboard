@@ -36,6 +36,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y69-4a-Oc3">
+                                <rect key="frame" x="179.5" y="248.5" width="55" height="30"/>
+                                <state key="normal" title="Convert"/>
+                                <connections>
+                                    <action selector="doConvert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fXg-xd-2It"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="V77-UA-BDE" userLabel="To Stack View">
                                 <rect key="frame" x="30" y="188.5" width="354" height="30"/>
                                 <subviews>
@@ -52,7 +59,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-67-bQG">
-                                <rect key="frame" x="0.0" y="268.5" width="414" height="593.5"/>
+                                <rect key="frame" x="0.0" y="308.5" width="414" height="553.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -60,12 +67,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="m20-iP-BFa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="378-GX-Klw"/>
+                            <constraint firstItem="Y69-4a-Oc3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4gd-yc-2mc"/>
                             <constraint firstItem="m20-iP-BFa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="8LI-WQ-5Gk"/>
                             <constraint firstItem="MMC-67-bQG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ayw-r1-L8t"/>
                             <constraint firstItem="V77-UA-BDE" firstAttribute="top" secondItem="jsw-ti-e5Y" secondAttribute="bottom" constant="30" id="Coe-eI-oGG"/>
+                            <constraint firstItem="Y69-4a-Oc3" firstAttribute="top" secondItem="V77-UA-BDE" secondAttribute="bottom" constant="30" id="E9r-at-5pL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MMC-67-bQG" secondAttribute="trailing" id="LVd-OX-Dm3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jsw-ti-e5Y" secondAttribute="trailing" constant="30" id="MQd-m7-AaW"/>
-                            <constraint firstItem="MMC-67-bQG" firstAttribute="top" secondItem="V77-UA-BDE" secondAttribute="bottom" constant="50" id="MZI-EQ-Od9"/>
+                            <constraint firstItem="MMC-67-bQG" firstAttribute="top" secondItem="Y69-4a-Oc3" secondAttribute="bottom" constant="30" id="MZI-EQ-Od9"/>
                             <constraint firstAttribute="trailing" secondItem="V77-UA-BDE" secondAttribute="trailing" constant="30" id="b0o-Pj-GrC"/>
                             <constraint firstItem="V77-UA-BDE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fha-Al-LGT"/>
                             <constraint firstItem="jsw-ti-e5Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fqm-vk-tzB"/>
@@ -75,7 +84,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="currencyDataLabel" destination="m20-iP-BFa" id="yHA-S6-P0C"/>
+                        <outlet property="TimeLabel" destination="m20-iP-BFa" id="yHA-S6-P0C"/>
                         <outlet property="fromButton" destination="tf9-Sv-KjK" id="RIn-qX-uoZ"/>
                         <outlet property="inputTestField" destination="MAe-Ec-VGf" id="R67-Pe-764"/>
                         <outlet property="resultLabel" destination="78E-XC-Dd2" id="1HA-Cj-o27"/>

@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var currencyDataLabel: UILabel!
+    @IBOutlet weak var TimeLabel: UILabel!
     @IBOutlet weak var inputTestField: UITextField!
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var toButton: UIButton!
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        setupView()
+        resetUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,14 +31,22 @@ class ViewController: UIViewController {
         }
     }
     
-    func setupView() {
+    @IBAction func doConvert(_ sender: UIButton) {
+        updateResult()
+    }
+    
+    func resetUI() {
+        inputTestField.text = "1.0"
         fromButton.setTitle("USD", for: .normal)
         toButton.setTitle("JPY", for: .normal)
+        resultLabel.text = "-- Incorrect input value --"
         tableView.register(ListCell.self, forCellReuseIdentifier: "ListCell")
+        tableView.reloadData()
     }
     
     func checkTime() {
         let now = Int(Date().timeIntervalSince1970)
+        print("^^^", Rates.timestamp, now)
         if let timestamp = Rates.timestamp,
            now - timestamp > 1800000 { //30 min
             getRatesAndSave()
@@ -64,16 +72,22 @@ class ViewController: UIViewController {
     }
     
     func updateQuotes() {
-        guard let timestamp = Rates.timestamp,
-              let quotes = Rates.quotes else { return }
-        let dateString = timestamp.toDateString()
-        currencyDataLabel.text = "Rates updated(GMT): \(dateString)"
-        inputTestField.text = "1.0"
-        fromButton.setTitle(Rates.source, for: .normal)
-        if let rate = quotes.first(where: {$0.key == "USDJPY"}) {
-            resultLabel.text = "= \(rate.value) JPY"
-        }
+        guard let timestamp = Rates.timestamp else { return }
+        TimeLabel.text = "Rates updated(GMT): \(timestamp.toDateString())"
+//        fromButton.setTitle(Rates.source, for: .normal)
+        updateResult()
         tableView.reloadData()
+    }
+    
+    func updateResult() {
+        guard let mumber: Double = Double(inputTestField.text ?? "") else {
+            resultLabel.text = "-- Incorrect input value --"
+            return
+        }
+        if let rate = Rates.quotes?.first(where: {$0.key == "USDJPY"}) {
+            let text = rate.value * mumber
+            resultLabel.text = " = \(text)"
+        }
     }
 }
 

@@ -104,10 +104,9 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListCell else { return UITableViewCell() }
-        if let quotes = Rates.quotes {
-            let country: String = [String](quotes.keys)[indexPath.row].subString(from: 3) // USDJPY → JPY
-            let rate: Double = [Double](quotes.values)[indexPath.row]// 这种写法不好
-            cell.bind(country: country, rate: rate)
+        if let currencies = Rates.currencies,
+           let rates = Rates.rates {
+            cell.bind(country: currencies[indexPath.row], rate: rates[indexPath.row])
         }
         return cell
     }

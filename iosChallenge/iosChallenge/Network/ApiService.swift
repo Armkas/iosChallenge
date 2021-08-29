@@ -15,12 +15,12 @@ struct ApiService {
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let err = err {
-                print("#$%Failed to get data:", err)
+                print("Failed to get data:", err)
                 return
             }
             if let data = data {
                 if let jsonString = String(data: data, encoding: .utf8) {
-                    print("#$%",jsonString)
+                    print("Succeed to get data:", jsonString)
                     completion(jsonString)
                 }
             }

@@ -7,13 +7,13 @@
 
 import Foundation
 
-//extension Date {
-//    static func getCurrentDateTime() -> String {
-//        let date = Date()
-//        let df = DateFormatter()
-//        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        return df.string(from: date)
-//    }
-//}
+extension Date {
+    static func getCurrentDateTime() -> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return df.string(from: date)
+    }
+}
 
 

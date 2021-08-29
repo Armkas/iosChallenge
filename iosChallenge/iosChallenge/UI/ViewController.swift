@@ -62,7 +62,6 @@ class ViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 view.isUserInteractionEnabled = true
             }
-            print("@@@@@@____1")
             updateUI()
         }
     }
@@ -146,7 +145,6 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("@@@@@@2", GlobalData.countries?[row])
         return GlobalData.countries?[row]
     }
     

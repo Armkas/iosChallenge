@@ -90,7 +90,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getRatesAndSave() {
         let url = GlobalUrl.get_all_rate_base_USD
         GlobalData.isSyncing = true
-        ApiService.shared.fetchApiData(urlString: url) { data in
+        ApiService.shared.fetchApiData(urlString: url) { (data, err)  in
+            if let err = err {
+                NotificationCenter.default.post(name: Notification.Name("APIError"), object: nil)
+                GlobalData.isSyncing = false
+                return
+            }
             if let data = data,
                let ratesResult = try? JSONDecoder().decode(RatesResult.self, from: Data(data.utf8)),
                ratesResult.success {

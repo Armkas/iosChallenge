@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         toPicker.dataSource = self
         toPicker.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(changeActivityIndicator), name: Notification.Name("SyncStateChange"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showAlert), name: Notification.Name("APIError"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +118,16 @@ class ViewController: UIViewController {
         fromPicker.isHidden = true
         toPicker.isHidden = true
     }
+    
+    @objc func showAlert() {
+        let alert = UIAlertController(title: "API Error", message: "Please Check you network", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+        alert.addAction(ok)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource {

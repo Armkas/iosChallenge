@@ -7,32 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "31E52B57-3BF6-4A2A-A1B9-A07350504233"
+            uuid = "7501B5BF-6B6A-4AE1-BCE6-D679E0F1A9A1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iosChallenge/AppDelegate.swift"
+            filePath = "iosChallenge/UI/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "checkTime()"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "showAlert()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6B6EFFAD-A524-4D40-83EC-AF5A2ABBA0EB"
+            uuid = "2D4C4984-F160-4F21-B983-65D633FCFCD2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosChallenge/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "checkTime()"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "getRatesAndSave()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "450202E1-3748-4A90-8669-8FBB6D62E334"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosChallenge/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "getRatesAndSave()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

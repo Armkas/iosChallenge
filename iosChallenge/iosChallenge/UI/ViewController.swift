@@ -20,6 +20,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
                 
         resetUI()
+        inputTextField.keyboardType = .numbersAndPunctuation
+        let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tap))
+        tapGestureReconizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureReconizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +40,6 @@ class ViewController: UIViewController {
     }
     
     func resetUI() {
-        inputTextField.keyboardType = .numbersAndPunctuation
         inputTextField.text = "1.0"
         fromButton.setTitle("USD", for: .normal)
         toButton.setTitle("JPY", for: .normal)
@@ -93,6 +96,10 @@ class ViewController: UIViewController {
             let text = rate.value * mumber
             resultLabel.text = " = \(text)"
         }
+    }
+    
+    @objc func tap() {
+        view.endEditing(true)
     }
 }
 

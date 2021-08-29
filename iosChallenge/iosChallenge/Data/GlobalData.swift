@@ -5,12 +5,9 @@
 //  Created by puyue on R 3/08/29.
 //
 
-//internal struct Currencies {
-//    static var currencies: [String : String]?
-//    static var isSyncing = false
-//}
+import Foundation
 
-internal struct Rates {
+internal struct GlobalData {
     static var timestamp: Int?
     static var source: String?
     static var quotes: [String : Double]? {
@@ -25,7 +22,11 @@ internal struct Rates {
     static var countries: [String]?
     static var rates: [Double]?
     static var country_rate: [(String, Double)]?
-    static var isSyncing = false
+    static var isSyncing = false {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name("SyncStateChange"), object: nil)
+        }
+    }
 }
 
 

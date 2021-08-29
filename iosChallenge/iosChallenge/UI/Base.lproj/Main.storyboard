@@ -84,6 +84,11 @@
                                     <constraint firstAttribute="width" constant="200" id="Ngl-5I-aiZ"/>
                                 </constraints>
                             </pickerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="RwS-rk-7tl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,13 +100,17 @@
                             <constraint firstItem="MMC-67-bQG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ayw-r1-L8t"/>
                             <constraint firstItem="V77-UA-BDE" firstAttribute="top" secondItem="jsw-ti-e5Y" secondAttribute="bottom" constant="30" id="Coe-eI-oGG"/>
                             <constraint firstItem="Y69-4a-Oc3" firstAttribute="top" secondItem="V77-UA-BDE" secondAttribute="bottom" constant="30" id="E9r-at-5pL"/>
+                            <constraint firstAttribute="bottom" secondItem="RwS-rk-7tl" secondAttribute="bottom" id="JIM-0t-aWM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MMC-67-bQG" secondAttribute="trailing" id="LVd-OX-Dm3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jsw-ti-e5Y" secondAttribute="trailing" constant="30" id="MQd-m7-AaW"/>
                             <constraint firstItem="MMC-67-bQG" firstAttribute="top" secondItem="Y69-4a-Oc3" secondAttribute="bottom" constant="30" id="MZI-EQ-Od9"/>
+                            <constraint firstItem="RwS-rk-7tl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UJA-by-qXG"/>
                             <constraint firstAttribute="trailing" secondItem="V77-UA-BDE" secondAttribute="trailing" constant="30" id="b0o-Pj-GrC"/>
                             <constraint firstItem="MUT-Gf-gqK" firstAttribute="trailing" secondItem="tf9-Sv-KjK" secondAttribute="trailing" id="dey-Vp-kIH"/>
+                            <constraint firstItem="RwS-rk-7tl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fbo-WM-IVQ"/>
                             <constraint firstItem="V77-UA-BDE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fha-Al-LGT"/>
                             <constraint firstItem="jsw-ti-e5Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fqm-vk-tzB"/>
+                            <constraint firstAttribute="trailing" secondItem="RwS-rk-7tl" secondAttribute="trailing" id="hLV-Br-Wgx"/>
                             <constraint firstItem="MUT-Gf-gqK" firstAttribute="top" secondItem="tf9-Sv-KjK" secondAttribute="bottom" id="p06-sg-8YI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MMC-67-bQG" secondAttribute="bottom" id="qbr-Lv-C0G"/>
                             <constraint firstItem="18I-G1-ae5" firstAttribute="trailing" secondItem="hz6-0n-hqp" secondAttribute="trailing" id="sIm-UM-ldo"/>
@@ -111,6 +120,7 @@
                     </view>
                     <connections>
                         <outlet property="TimeLabel" destination="m20-iP-BFa" id="yHA-S6-P0C"/>
+                        <outlet property="activityIndicator" destination="RwS-rk-7tl" id="bCd-w5-QE1"/>
                         <outlet property="fromButton" destination="tf9-Sv-KjK" id="RIn-qX-uoZ"/>
                         <outlet property="fromPicker" destination="MUT-Gf-gqK" id="pyR-fk-Yo2"/>
                         <outlet property="inputTextField" destination="MAe-Ec-VGf" id="R67-Pe-764"/>

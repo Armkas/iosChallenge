@@ -12,7 +12,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if Rates.timestamp == nil {
+        if GlobalData.timestamp == nil {
             getRatesAndSave()
         } else {
             checkTime()
@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func checkTime() {
         let now = Int(Date().timeIntervalSince1970)
-        if let timestamp = Rates.timestamp,
+        if let timestamp = GlobalData.timestamp,
            now - timestamp > 1800000 { //30 min
             getRatesAndSave()
         }
@@ -89,15 +89,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getRatesAndSave() {
         let url = GlobalUrl.get_all_rate_base_USD
-        Rates.isSyncing = true
+        GlobalData.isSyncing = true
         ApiService.shared.fetchApiData(urlString: url) { data in
             if let data = data,
                let ratesResult = try? JSONDecoder().decode(RatesResult.self, from: Data(data.utf8)),
                ratesResult.success {
-                Rates.timestamp = ratesResult.timestamp
-                Rates.source = ratesResult.source
-                Rates.quotes = ratesResult.quotes
-                Rates.isSyncing = false
+                GlobalData.timestamp = ratesResult.timestamp
+                GlobalData.source = ratesResult.source
+                GlobalData.quotes = ratesResult.quotes
+                GlobalData.isSyncing = false
             }
         }
     }

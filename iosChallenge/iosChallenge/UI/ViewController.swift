@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var fromPicker: UIPickerView!
     @IBOutlet weak var toPicker: UIPickerView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var fromCurrency: String = "USD" {
         didSet {
@@ -27,6 +28,10 @@ class ViewController: UIViewController {
         didSet {
             updateResult()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLoad() {
@@ -40,11 +45,26 @@ class ViewController: UIViewController {
         fromPicker.delegate = self
         toPicker.dataSource = self
         toPicker.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(changeActivityIndicator), name: Notification.Name("SyncStateChange"), object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateUI()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        changeActivityIndicator()
+    }
+    
+    @objc func changeActivityIndicator() {
+        DispatchQueue.main.async { [self] in
+            if GlobalData.isSyncing {
+                activityIndicator.startAnimating()
+                view.isUserInteractionEnabled = false
+            } else {
+                activityIndicator.stopAnimating()
+                view.isUserInteractionEnabled = true
+            }
+            print("@@@@@@____1")
+            updateUI()
+        }
     }
     
     @IBAction func fromButtonClicked(_ sender: UIButton) {
@@ -69,13 +89,15 @@ class ViewController: UIViewController {
             UINib(nibName: "ListCell", bundle: nil),
             forCellReuseIdentifier: "ListCell"
         )
-        guard let timestamp = Rates.timestamp else { return }
-        TimeLabel.text = "Rates updated(GMT): \(timestamp.toDateString())"
     }
     
     func updateUI() {
         updateResult()
         tableView.reloadData()
+        fromPicker.reloadAllComponents()
+        toPicker.reloadAllComponents()
+        guard let timestamp = GlobalData.timestamp else { return }
+        TimeLabel.text = "Rates updated(GMT): \(timestamp.toDateString())"
     }
     
     func updateResult() {
@@ -83,8 +105,8 @@ class ViewController: UIViewController {
             resultLabel.text = "-- Incorrect input value --"
             return
         }
-        if let base = Rates.quotes?.first(where: {$0.key == "USD\(fromCurrency)"}),
-           let taget = Rates.quotes?.first(where: {$0.key == "USD\(toCurrency)"}) {
+        if let base = GlobalData.quotes?.first(where: {$0.key == "USD\(fromCurrency)"}),
+           let taget = GlobalData.quotes?.first(where: {$0.key == "USD\(toCurrency)"}) {
             let rate = taget.value / base.value // e.g.: JPYCNY == USDCNY / USDJPY
             let text = rate * mumber
             resultLabel.text = " = \(text)"
@@ -101,12 +123,12 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Rates.quotes?.count ?? 0
+        return GlobalData.quotes?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListCell else { return UITableViewCell() }
-        if let country_rate = Rates.country_rate {
+        if let country_rate = GlobalData.country_rate {
             cell.bind(country_rate[indexPath.row])
         }
         return cell
@@ -120,23 +142,24 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        Rates.countries?.count ?? 0
+        GlobalData.countries?.count ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Rates.countries?[row]
+        print("@@@@@@2", GlobalData.countries?[row])
+        return GlobalData.countries?[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView == fromPicker {
-            if let country = Rates.countries?[row] {
+            if let country = GlobalData.countries?[row] {
                 self.fromButton.setTitle(country, for: .normal)
                 self.fromCurrency = country
             }
             self.fromPicker.isHidden = true
         } else {
-            if let country = Rates.countries?[row] {
+            if let country = GlobalData.countries?[row] {
                 self.toButton.setTitle(country, for: .normal)
                 self.toCurrency = country
             }

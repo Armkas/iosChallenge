@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-internal final class ListCell: UITableViewCell {
+class ListCell: UITableViewCell {
 
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
@@ -18,9 +18,9 @@ internal final class ListCell: UITableViewCell {
         
     }
     
-    func bind(rate: Rate) {
-        countryLabel.text = rate.target
-        rateLabel.text = "\(rate.value)"
+    func bind(country: String, rate: Double) {
+        countryLabel.text = country
+        rateLabel.text = "\(rate)"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

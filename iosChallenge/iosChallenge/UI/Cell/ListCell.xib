@@ -28,6 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.75294117650000003" green="0.94117647059999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="hGy-Mc-dBk" firstAttribute="centerY" secondItem="h2B-9U-V2S" secondAttribute="centerY" id="0zz-6X-BUe"/>
                     <constraint firstItem="hGy-Mc-dBk" firstAttribute="leading" secondItem="h2B-9U-V2S" secondAttribute="leading" constant="30" id="Lku-Ex-XrX"/>
@@ -36,7 +37,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="countryLabel" destination="hGy-Mc-dBk" id="4EO-LF-fOy"/>
+                <outlet property="countryLabel" destination="hGy-Mc-dBk" id="mmM-qa-f7J"/>
                 <outlet property="rateLabel" destination="6zp-x7-Xya" id="WEB-JB-K9z"/>
             </connections>
             <point key="canvasLocation" x="-188" y="-229"/>

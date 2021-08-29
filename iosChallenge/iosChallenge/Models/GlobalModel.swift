@@ -7,11 +7,11 @@
 
 import Foundation
 
-internal struct Rate {
-    var source: String
-    var target: String
-    var value: Double
-}
+//internal struct Rate {
+//    var source: String
+//    var target: String
+//    var value: Double
+//}
 
 //internal struct Currency {
 //    var source: String

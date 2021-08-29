@@ -40,13 +40,17 @@ class ViewController: UIViewController {
         fromButton.setTitle("USD", for: .normal)
         toButton.setTitle("JPY", for: .normal)
         resultLabel.text = "-- Incorrect input value --"
-        tableView.register(ListCell.self, forCellReuseIdentifier: "ListCell")
+        tableView.dataSource = self
+//        tableView.delegate = self
+        tableView.register(
+            UINib(nibName: "ListCell", bundle: nil),
+            forCellReuseIdentifier: "ListCell"
+        )
         tableView.reloadData()
     }
     
     func checkTime() {
         let now = Int(Date().timeIntervalSince1970)
-        print("^^^", Rates.timestamp, now)
         if let timestamp = Rates.timestamp,
            now - timestamp > 1800000 { //30 min
             getRatesAndSave()
@@ -91,23 +95,25 @@ class ViewController: UIViewController {
     }
 }
 
-//extension ViewController: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 10
-//    }
-//
-////    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-////        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.currencyListCell, for: indexPath) else { return UITableViewCell() }
-////        let rate = currencyData?.quotes[indexPath.row] ?? Rate.init(source: "XXX", target: "XXX", value: 0.0)
-////        cell.bind(rate: rate)
-////        return cell
-////    }
-//}
-// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDataSource {
 
-extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Rates.quotes?.count ?? 0
+    }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListCell else { return UITableViewCell() }
+        if let quotes = Rates.quotes {
+            let country: String = [String](quotes.keys)[indexPath.row].subString(from: 3) // USDJPY → JPY
+            let rate: Double = [Double](quotes.values)[indexPath.row]// 这种写法不好
+            cell.bind(country: country, rate: rate)
+        }
+        return cell
+    }
+}
+
+//extension ViewController: UITableViewDelegate {
+//
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 50
 //    }
@@ -115,4 +121,4 @@ extension ViewController: UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        tableView.deselectRow(at: indexPath, animated: true)
 //    }
-}
+//}

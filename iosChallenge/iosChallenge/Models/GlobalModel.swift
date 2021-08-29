@@ -13,12 +13,24 @@ internal struct Rate {
     var value: Double
 }
 
-internal struct Currency {
-    var source: String
-    var timestamp: Int
-    var privacy: String
-    var terms: String
-    var success: Bool
-    var lastUpdate: Date
-    var quotes: [Rate]
+//internal struct Currency {
+//    var source: String
+//    var timestamp: Int
+//    var privacy: String
+//    var terms: String
+//    var success: Bool
+//    var lastUpdate: Date
+//    var quotes: [Rate]
+//}
+
+internal struct CountriesResult: Decodable {
+    let success: Bool
+    let currencies: [String: String]
+}
+
+internal struct RatesResult: Decodable {
+    let success: Bool
+    let timestamp: Int
+    let source: String
+    let quotes: [String: Double]
 }

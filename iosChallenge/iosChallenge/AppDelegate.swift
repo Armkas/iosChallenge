@@ -11,10 +11,10 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+//        if Currencies.currencies == nil {
+////            getCountryAndSave()
+//        }
         return true
     }
 
@@ -76,6 +76,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+//    func getCountryAndSave() {//一次性访问太多会超过免费限制 所以这个不要了
+//        let url = ApiUrl.get_all_county
+//        Currencies.isSyncing = true
+//        ApiService.shared.fetchApiData(urlString: url) { data in
+//            if let data = data,
+//               let countriesResult = try? JSONDecoder().decode(CountriesResult.self, from: Data(data.utf8)),
+//               countriesResult.success {
+//                Currencies.currencies = countriesResult.currencies
+//                Currencies.isSyncing = false
+//            }
+//        }
+//    }
 }
 

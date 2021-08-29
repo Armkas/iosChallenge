@@ -111,9 +111,8 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListCell else { return UITableViewCell() }
-        if let currencies = Rates.currencies,
-           let rates = Rates.rates {
-            cell.bind(country: currencies[indexPath.row], rate: rates[indexPath.row])
+        if let country_rate = Rates.country_rate {
+            cell.bind(country_rate[indexPath.row])
         }
         return cell
     }

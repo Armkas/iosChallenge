@@ -18,9 +18,9 @@ class ListCell: UITableViewCell {
         
     }
     
-    func bind(country: String, rate: Double) {
-        countryLabel.text = country
-        rateLabel.text = "\(rate)"
+    func bind(_ countryRate: (String, Double)) {
+        countryLabel.text = countryRate.0
+        rateLabel.text = "\(countryRate.1)"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

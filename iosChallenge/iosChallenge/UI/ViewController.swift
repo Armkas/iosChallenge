@@ -18,6 +18,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var fromPicker: UIPickerView!
     @IBOutlet weak var toPicker: UIPickerView!
     
+    private var fromCurrency: String = "USD" {
+        didSet {
+            updateResult()
+        }
+    }
+    private var toCurrency: String = "JPY" {
+        didSet {
+            updateResult()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         resetUI()
@@ -50,15 +61,14 @@ class ViewController: UIViewController {
     
     func resetUI() {
         inputTextField.text = "1.0"
-        fromButton.setTitle("USD", for: .normal)
-        toButton.setTitle("JPY", for: .normal)
+        fromButton.setTitle(fromCurrency, for: .normal)
+        toButton.setTitle(toCurrency, for: .normal)
         resultLabel.text = "-- Incorrect input value --"
         tableView.dataSource = self
         tableView.register(
             UINib(nibName: "ListCell", bundle: nil),
             forCellReuseIdentifier: "ListCell"
         )
-        tableView.reloadData()
         guard let timestamp = Rates.timestamp else { return }
         TimeLabel.text = "Rates updated(GMT): \(timestamp.toDateString())"
     }
@@ -73,10 +83,8 @@ class ViewController: UIViewController {
             resultLabel.text = "-- Incorrect input value --"
             return
         }
-        let fromCurrencyTitle = fromButton.title(for: .normal)!
-        let toCurrencyTitle = toButton.title(for: .normal)!
-        if let base = Rates.quotes?.first(where: {$0.key == "USD\(fromCurrencyTitle)"}),
-           let taget = Rates.quotes?.first(where: {$0.key == "USD\(toCurrencyTitle)"}) {
+        if let base = Rates.quotes?.first(where: {$0.key == "USD\(fromCurrency)"}),
+           let taget = Rates.quotes?.first(where: {$0.key == "USD\(toCurrency)"}) {
             let rate = taget.value / base.value // e.g.: JPYCNY == USDCNY / USDJPY
             let text = rate * mumber
             resultLabel.text = " = \(text)"
@@ -120,11 +128,18 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         if pickerView == fromPicker {
-            self.fromButton.setTitle(Rates.countries?[row], for: .normal)
+            if let country = Rates.countries?[row] {
+                self.fromButton.setTitle(country, for: .normal)
+                self.fromCurrency = country
+            }
             self.fromPicker.isHidden = true
         } else {
-            self.toButton.setTitle(Rates.countries?[row], for: .normal)
+            if let country = Rates.countries?[row] {
+                self.toButton.setTitle(country, for: .normal)
+                self.toCurrency = country
+            }
             self.toPicker.isHidden = true
         }
     }

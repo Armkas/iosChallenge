@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var TimeLabel: UILabel!
-    @IBOutlet weak var inputTestField: UITextField!
+    @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var toButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
@@ -36,7 +36,8 @@ class ViewController: UIViewController {
     }
     
     func resetUI() {
-        inputTestField.text = "1.0"
+        inputTextField.keyboardType = .numbersAndPunctuation
+        inputTextField.text = "1.0"
         fromButton.setTitle("USD", for: .normal)
         toButton.setTitle("JPY", for: .normal)
         resultLabel.text = "-- Incorrect input value --"
@@ -84,7 +85,7 @@ class ViewController: UIViewController {
     }
     
     func updateResult() {
-        guard let mumber: Double = Double(inputTestField.text ?? "") else {
+        guard let mumber: Double = Double(inputTextField.text ?? "") else {
             resultLabel.text = "-- Incorrect input value --"
             return
         }
@@ -111,14 +112,3 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
 }
-
-//extension ViewController: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
-//}

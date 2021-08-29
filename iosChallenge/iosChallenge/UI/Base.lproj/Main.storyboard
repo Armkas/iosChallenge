@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m20-iP-BFa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m20-iP-BFa">
                                 <rect key="frame" x="10" y="74" width="394" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -86,7 +86,7 @@
                     <connections>
                         <outlet property="TimeLabel" destination="m20-iP-BFa" id="yHA-S6-P0C"/>
                         <outlet property="fromButton" destination="tf9-Sv-KjK" id="RIn-qX-uoZ"/>
-                        <outlet property="inputTestField" destination="MAe-Ec-VGf" id="R67-Pe-764"/>
+                        <outlet property="inputTextField" destination="MAe-Ec-VGf" id="R67-Pe-764"/>
                         <outlet property="resultLabel" destination="78E-XC-Dd2" id="1HA-Cj-o27"/>
                         <outlet property="tableView" destination="MMC-67-bQG" id="2cH-0h-r5f"/>
                         <outlet property="toButton" destination="hz6-0n-hqp" id="Pss-jc-mmp"/>

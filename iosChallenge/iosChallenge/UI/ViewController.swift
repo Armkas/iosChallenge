@@ -15,24 +15,33 @@ class ViewController: UIViewController {
     @IBOutlet weak var toButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var fromPicker: UIPickerView!
+    @IBOutlet weak var toPicker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
         resetUI()
         inputTextField.keyboardType = .numbersAndPunctuation
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tap))
         tapGestureReconizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureReconizer)
+        fromPicker.dataSource = self
+        fromPicker.delegate = self
+        toPicker.dataSource = self
+        toPicker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if Rates.timestamp == nil {
-            getRatesAndSave()
-        } else {
-            checkTime()
-        }
+        updateUI()
+    }
+    
+    @IBAction func fromButtonClicked(_ sender: UIButton) {
+        fromPicker.isHidden = false
+    }
+    
+    @IBAction func toButtonClicked(_ sender: UIButton) {
+        toPicker.isHidden = false
     }
     
     @IBAction func doConvert(_ sender: UIButton) {
@@ -45,44 +54,16 @@ class ViewController: UIViewController {
         toButton.setTitle("JPY", for: .normal)
         resultLabel.text = "-- Incorrect input value --"
         tableView.dataSource = self
-//        tableView.delegate = self
         tableView.register(
             UINib(nibName: "ListCell", bundle: nil),
             forCellReuseIdentifier: "ListCell"
         )
         tableView.reloadData()
-    }
-    
-    func checkTime() {
-        let now = Int(Date().timeIntervalSince1970)
-        if let timestamp = Rates.timestamp,
-           now - timestamp > 1800000 { //30 min
-            getRatesAndSave()
-        }
-    }
-    
-    func getRatesAndSave() {
-        let url = GlobalUrl.get_all_rate_base_USD
-        Rates.isSyncing = true
-        ApiService.shared.fetchApiData(urlString: url) { data in
-            if let data = data,
-               let ratesResult = try? JSONDecoder().decode(RatesResult.self, from: Data(data.utf8)),
-               ratesResult.success {
-                Rates.timestamp = ratesResult.timestamp
-                Rates.source = ratesResult.source
-                Rates.quotes = ratesResult.quotes
-                Rates.isSyncing = false
-                DispatchQueue.main.async { [self] in
-                    self.updateQuotes()
-                }
-            }
-        }
-    }
-    
-    func updateQuotes() {
         guard let timestamp = Rates.timestamp else { return }
         TimeLabel.text = "Rates updated(GMT): \(timestamp.toDateString())"
-//        fromButton.setTitle(Rates.source, for: .normal)
+    }
+    
+    func updateUI() {
         updateResult()
         tableView.reloadData()
     }
@@ -92,14 +73,20 @@ class ViewController: UIViewController {
             resultLabel.text = "-- Incorrect input value --"
             return
         }
-        if let rate = Rates.quotes?.first(where: {$0.key == "USDJPY"}) {
-            let text = rate.value * mumber
+        let fromCurrencyTitle = fromButton.title(for: .normal)!
+        let toCurrencyTitle = toButton.title(for: .normal)!
+        if let base = Rates.quotes?.first(where: {$0.key == "USD\(fromCurrencyTitle)"}),
+           let taget = Rates.quotes?.first(where: {$0.key == "USD\(toCurrencyTitle)"}) {
+            let rate = taget.value / base.value // e.g.: JPYCNY == USDCNY / USDJPY
+            let text = rate * mumber
             resultLabel.text = " = \(text)"
         }
     }
     
     @objc func tap() {
         view.endEditing(true)
+        fromPicker.isHidden = true
+        toPicker.isHidden = true
     }
 }
 
@@ -115,5 +102,30 @@ extension ViewController: UITableViewDataSource {
             cell.bind(country_rate[indexPath.row])
         }
         return cell
+    }
+}
+
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        Rates.countries?.count ?? 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Rates.countries?[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == fromPicker {
+            self.fromButton.setTitle(Rates.countries?[row], for: .normal)
+            self.fromPicker.isHidden = true
+        } else {
+            self.toButton.setTitle(Rates.countries?[row], for: .normal)
+            self.toPicker.isHidden = true
+        }
     }
 }

@@ -12,9 +12,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        if Currencies.currencies == nil {
-////            getCountryAndSave()
-//        }
+        if Rates.timestamp == nil {
+            getRatesAndSave()
+        } else {
+            checkTime()
+        }
         return true
     }
 
@@ -77,17 +79,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-//    func getCountryAndSave() {//一次性访问太多会超过免费限制 所以这个不要了
-//        let url = GlobalUrl.get_all_county
-//        Currencies.isSyncing = true
-//        ApiService.shared.fetchApiData(urlString: url) { data in
-//            if let data = data,
-//               let countriesResult = try? JSONDecoder().decode(CountriesResult.self, from: Data(data.utf8)),
-//               countriesResult.success {
-//                Currencies.currencies = countriesResult.currencies
-//                Currencies.isSyncing = false
-//            }
-//        }
-//    }
+    func checkTime() {
+        let now = Int(Date().timeIntervalSince1970)
+        if let timestamp = Rates.timestamp,
+           now - timestamp > 1800000 { //30 min
+            getRatesAndSave()
+        }
+    }
+    
+    func getRatesAndSave() {
+        let url = GlobalUrl.get_all_rate_base_USD
+        Rates.isSyncing = true
+        ApiService.shared.fetchApiData(urlString: url) { data in
+            if let data = data,
+               let ratesResult = try? JSONDecoder().decode(RatesResult.self, from: Data(data.utf8)),
+               ratesResult.success {
+                Rates.timestamp = ratesResult.timestamp
+                Rates.source = ratesResult.source
+                Rates.quotes = ratesResult.quotes
+                Rates.isSyncing = false
+            }
+        }
+    }
 }
 

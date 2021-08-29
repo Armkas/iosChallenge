@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 //    func getCountryAndSave() {//一次性访问太多会超过免费限制 所以这个不要了
-//        let url = ApiUrl.get_all_county
+//        let url = GlobalUrl.get_all_county
 //        Currencies.isSyncing = true
 //        ApiService.shared.fetchApiData(urlString: url) { data in
 //            if let data = data,

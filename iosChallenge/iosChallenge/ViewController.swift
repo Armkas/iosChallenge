@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     }
     
     func getRatesAndSave() {
-        let url = ApiUrl.get_all_rate_base_USD
+        let url = GlobalUrl.get_all_rate_base_USD
         Rates.isSyncing = true
         ApiService.shared.fetchApiData(urlString: url) { data in
             if let data = data,

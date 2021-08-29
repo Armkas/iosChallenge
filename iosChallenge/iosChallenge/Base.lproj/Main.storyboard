@@ -52,7 +52,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-67-bQG">
-                                <rect key="frame" x="0.0" y="453" width="414" height="409"/>
+                                <rect key="frame" x="0.0" y="268.5" width="414" height="593.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -65,10 +65,10 @@
                             <constraint firstItem="V77-UA-BDE" firstAttribute="top" secondItem="jsw-ti-e5Y" secondAttribute="bottom" constant="30" id="Coe-eI-oGG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MMC-67-bQG" secondAttribute="trailing" id="LVd-OX-Dm3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jsw-ti-e5Y" secondAttribute="trailing" constant="30" id="MQd-m7-AaW"/>
+                            <constraint firstItem="MMC-67-bQG" firstAttribute="top" secondItem="V77-UA-BDE" secondAttribute="bottom" constant="50" id="MZI-EQ-Od9"/>
                             <constraint firstAttribute="trailing" secondItem="V77-UA-BDE" secondAttribute="trailing" constant="30" id="b0o-Pj-GrC"/>
                             <constraint firstItem="V77-UA-BDE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fha-Al-LGT"/>
                             <constraint firstItem="jsw-ti-e5Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fqm-vk-tzB"/>
-                            <constraint firstItem="MMC-67-bQG" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.5" id="ihJ-wc-dvY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MMC-67-bQG" secondAttribute="bottom" id="qbr-Lv-C0G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m20-iP-BFa" secondAttribute="trailing" constant="10" id="sKh-Fg-7py"/>
                             <constraint firstItem="jsw-ti-e5Y" firstAttribute="top" secondItem="m20-iP-BFa" secondAttribute="bottom" constant="30" id="wwF-JA-gaI"/>

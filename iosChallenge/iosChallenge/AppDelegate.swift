@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkTime() {
         let now = Int(Date().timeIntervalSince1970)
         if let timestamp = GlobalData.timestamp,
-           now - timestamp > 1800000 { //30 min
+           now - timestamp > 1800 { //30 min
             getRatesAndSave()
         }
     }

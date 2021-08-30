@@ -20,7 +20,6 @@
 		B4E0FCBC26DA29BA00470E44 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCBB26DA29BA00470E44 /* ListCell.swift */; };
 		B4E0FCBF26DA2C8A00470E44 /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCBE26DA2C8A00470E44 /* GlobalModel.swift */; };
 		B4E0FCC226DA503900470E44 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCC126DA503900470E44 /* Int.swift */; };
-		B4E0FCCC26DA616900470E44 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCCB26DA616900470E44 /* Date.swift */; };
 		B4E0FCCE26DAADA100470E44 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCCD26DAADA100470E44 /* ApiService.swift */; };
 		B4E0FCD026DAB90600470E44 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCCF26DAB90600470E44 /* GlobalData.swift */; };
 		B4E0FCD226DB4E3100470E44 /* GlobalUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCD126DB4E3100470E44 /* GlobalUrl.swift */; };
@@ -64,7 +63,6 @@
 		B4E0FCBB26DA29BA00470E44 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		B4E0FCBE26DA2C8A00470E44 /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
 		B4E0FCC126DA503900470E44 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
-		B4E0FCCB26DA616900470E44 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B4E0FCCD26DAADA100470E44 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		B4E0FCCF26DAB90600470E44 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		B4E0FCD126DB4E3100470E44 /* GlobalUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUrl.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 		B4E0FCC026DA500F00470E44 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B4E0FCCB26DA616900470E44 /* Date.swift */,
 				B4E0FCC126DA503900470E44 /* Int.swift */,
 				B4E0FCD426DB7C1F00470E44 /* String.swift */,
 			);
@@ -339,7 +336,6 @@
 			files = (
 				B45B495D26D7EA5000165037 /* ViewController.swift in Sources */,
 				B4E0FCD526DB7C1F00470E44 /* String.swift in Sources */,
-				B4E0FCCC26DA616900470E44 /* Date.swift in Sources */,
 				B45B495926D7EA5000165037 /* AppDelegate.swift in Sources */,
 				B4E0FCBF26DA2C8A00470E44 /* GlobalModel.swift in Sources */,
 				B4E0FCD026DAB90600470E44 /* GlobalData.swift in Sources */,

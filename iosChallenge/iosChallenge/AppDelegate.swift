@@ -92,19 +92,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GlobalData.isSyncing = true
         ApiService.shared.fetchApiData(urlString: url) { (data, err)  in
             if let _ = err {
-                NotificationCenter.default.post(name: Notification.Name("APIError"), object: nil)
-                GlobalData.isSyncing = false
+                self.apiError()
                 return
             }
             if let data = data,
-               let ratesResult = try? JSONDecoder().decode(RatesResult.self, from: Data(data.utf8)),
-               ratesResult.success {
+               let ratesResult = try? JSONDecoder().decode(RatesResult.self, from: Data(data.utf8)), ratesResult.success {
+                guard ratesResult.success else {
+                    self.apiError()
+                    return
+                }
                 GlobalData.timestamp = ratesResult.timestamp
                 GlobalData.source = ratesResult.source
                 GlobalData.quotes = ratesResult.quotes
                 GlobalData.isSyncing = false
             }
         }
+    }
+    
+    func apiError() {
+        NotificationCenter.default.post(name: Notification.Name("APIError"), object: nil)
+        GlobalData.isSyncing = false
     }
 }
 

@@ -16,6 +16,11 @@
 		B45B496826D7EA5100165037 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45B496626D7EA5100165037 /* LaunchScreen.storyboard */; };
 		B45B497326D7EA5100165037 /* iosChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B497226D7EA5100165037 /* iosChallengeTests.swift */; };
 		B45B497E26D7EA5100165037 /* iosChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45B497D26D7EA5100165037 /* iosChallengeUITests.swift */; };
+		B45C0A7126DD1ACE00A54FFF /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C0A7026DD1ACE00A54FFF /* DataTests.swift */; };
+		B45C0A7326DD205600A54FFF /* UrlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C0A7226DD205600A54FFF /* UrlTest.swift */; };
+		B45C0A7526DD220A00A54FFF /* ApiServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C0A7426DD220A00A54FFF /* ApiServiceTest.swift */; };
+		B45C0A7726DD26A800A54FFF /* IntTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C0A7626DD26A800A54FFF /* IntTest.swift */; };
+		B45C0A7926DD28B200A54FFF /* StringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C0A7826DD28B200A54FFF /* StringTest.swift */; };
 		B4E0FCB926DA291B00470E44 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E0FCB826DA291B00470E44 /* ListCell.xib */; };
 		B4E0FCBC26DA29BA00470E44 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCBB26DA29BA00470E44 /* ListCell.swift */; };
 		B4E0FCBF26DA2C8A00470E44 /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E0FCBE26DA2C8A00470E44 /* GlobalModel.swift */; };
@@ -59,6 +64,11 @@
 		B45B497926D7EA5100165037 /* iosChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45B497D26D7EA5100165037 /* iosChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosChallengeUITests.swift; sourceTree = "<group>"; };
 		B45B497F26D7EA5100165037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B45C0A7026DD1ACE00A54FFF /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		B45C0A7226DD205600A54FFF /* UrlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlTest.swift; sourceTree = "<group>"; };
+		B45C0A7426DD220A00A54FFF /* ApiServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTest.swift; sourceTree = "<group>"; };
+		B45C0A7626DD26A800A54FFF /* IntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntTest.swift; sourceTree = "<group>"; };
+		B45C0A7826DD28B200A54FFF /* StringTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTest.swift; sourceTree = "<group>"; };
 		B4E0FCB826DA291B00470E44 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		B4E0FCBB26DA29BA00470E44 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		B4E0FCBE26DA2C8A00470E44 /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
@@ -135,6 +145,11 @@
 			children = (
 				B45B497226D7EA5100165037 /* iosChallengeTests.swift */,
 				B45B497426D7EA5100165037 /* Info.plist */,
+				B45C0A7026DD1ACE00A54FFF /* DataTests.swift */,
+				B45C0A7226DD205600A54FFF /* UrlTest.swift */,
+				B45C0A7426DD220A00A54FFF /* ApiServiceTest.swift */,
+				B45C0A7626DD26A800A54FFF /* IntTest.swift */,
+				B45C0A7826DD28B200A54FFF /* StringTest.swift */,
 			);
 			path = iosChallengeTests;
 			sourceTree = "<group>";
@@ -353,6 +368,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45B497326D7EA5100165037 /* iosChallengeTests.swift in Sources */,
+				B45C0A7126DD1ACE00A54FFF /* DataTests.swift in Sources */,
+				B45C0A7926DD28B200A54FFF /* StringTest.swift in Sources */,
+				B45C0A7726DD26A800A54FFF /* IntTest.swift in Sources */,
+				B45C0A7526DD220A00A54FFF /* ApiServiceTest.swift in Sources */,
+				B45C0A7326DD205600A54FFF /* UrlTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

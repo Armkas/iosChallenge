@@ -9,6 +9,7 @@ import Foundation
 
 internal struct GlobalData {
     static var timestamp: Int? // In Free plan, the timestamp in the server is only updated once a day, it is GMT time 11:53
+    static var lastAccessTime: Int?
     static var source: String?
     static var quotes: [String : Double]? {
         didSet {

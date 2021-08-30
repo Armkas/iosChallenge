@@ -12,11 +12,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if GlobalData.timestamp == nil {
-            getRatesAndSave()
-        } else {
-            checkTime()
-        }
+        ApiService.shared.getRatesAndSave()
         return true
     }
 
@@ -77,41 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
-    
-    func checkTime() {
-        let now = Int(Date().timeIntervalSince1970)
-        if let timestamp = GlobalData.timestamp,
-           now - timestamp > 1800 { //30 min
-            getRatesAndSave()
-        }
-    }
-    
-    func getRatesAndSave() {
-        let url = GlobalUrl.get_all_rate_base_USD
-        GlobalData.isSyncing = true
-        ApiService.shared.fetchApiData(urlString: url) { (data, err)  in
-            if let _ = err {
-                self.apiError()
-                return
-            }
-            if let data = data,
-               let ratesResult = try? JSONDecoder().decode(RatesResult.self, from: Data(data.utf8)), ratesResult.success {
-                guard ratesResult.success else {
-                    self.apiError()
-                    return
-                }
-                GlobalData.timestamp = ratesResult.timestamp
-                GlobalData.source = ratesResult.source
-                GlobalData.quotes = ratesResult.quotes
-                GlobalData.isSyncing = false
-            }
-        }
-    }
-    
-    func apiError() {
-        NotificationCenter.default.post(name: Notification.Name("APIError"), object: nil)
-        GlobalData.isSyncing = false
     }
 }
 

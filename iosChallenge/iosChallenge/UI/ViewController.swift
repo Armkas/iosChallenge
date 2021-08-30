@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         toPicker.dataSource = self
         toPicker.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(changeActivityIndicator), name: Notification.Name("SyncStateChange"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showAlert), name: Notification.Name("APIError"), object: nil)
     }
     
@@ -117,6 +118,14 @@ class ViewController: UIViewController {
         view.endEditing(true)
         fromPicker.isHidden = true
         toPicker.isHidden = true
+    }
+    
+    @objc func appWillEnterForeground() {
+        let now = Int(Date().timeIntervalSince1970)
+        if let lastAccessTime = GlobalData.lastAccessTime,
+           now - lastAccessTime > 1800 { //30 min
+            ApiService.shared.getRatesAndSave()
+        }
     }
     
     @objc func showAlert() {

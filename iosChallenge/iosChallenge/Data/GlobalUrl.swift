@@ -6,7 +6,7 @@
 //
 
 internal struct GlobalUrl {
-    static let baseUrl = "http://api.currencylayer.com" // Do not use "https" , it will fail
+    static let baseUrl = "http://api.currencylayer.com" // Do not use "https" , API will fail
     static let access_key = "f6fbf49394a6f17e75e64ef2662a89b6"
     static let get_all_rate_base_USD = "\(baseUrl)/live?access_key=\(access_key)&source=USD"
 }

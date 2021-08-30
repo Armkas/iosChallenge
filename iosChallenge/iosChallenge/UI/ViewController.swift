@@ -138,8 +138,8 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListCell else { return UITableViewCell() }
-        if let country_rate = GlobalData.country_rate {
-            cell.bind(country_rate[indexPath.row])
+        if let currency_rate = GlobalData.currency_rate {
+            cell.bind(currency_rate[indexPath.row])
         }
         return cell
     }
@@ -152,25 +152,25 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        GlobalData.countries?.count ?? 0
+        GlobalData.currencies?.count ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return GlobalData.countries?[row]
+        return GlobalData.currencies?[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView == fromPicker {
-            if let country = GlobalData.countries?[row] {
-                self.fromButton.setTitle(country, for: .normal)
-                self.fromCurrency = country
+            if let currency = GlobalData.currencies?[row] {
+                self.fromButton.setTitle(currency, for: .normal)
+                self.fromCurrency = currency
             }
             self.fromPicker.isHidden = true
         } else {
-            if let country = GlobalData.countries?[row] {
-                self.toButton.setTitle(country, for: .normal)
-                self.toCurrency = country
+            if let currency = GlobalData.currencies?[row] {
+                self.toButton.setTitle(currency, for: .normal)
+                self.toCurrency = currency
             }
             self.toPicker.isHidden = true
         }

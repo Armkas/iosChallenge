@@ -13,9 +13,9 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     
-    func bind(_ countryRate: (String, Double)) {
-        currencyLabel.text = countryRate.0
-        rateLabel.text = "\(countryRate.1)"
+    func bind(_ currencyRate: (String, Double)) {
+        currencyLabel.text = currencyRate.0
+        rateLabel.text = "\(currencyRate.1)"
     }
     
 }

@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = GlobalUrl.get_all_rate_base_USD
         GlobalData.isSyncing = true
         ApiService.shared.fetchApiData(urlString: url) { (data, err)  in
-            if let err = err {
+            if let _ = err {
                 NotificationCenter.default.post(name: Notification.Name("APIError"), object: nil)
                 GlobalData.isSyncing = false
                 return

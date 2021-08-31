@@ -129,7 +129,7 @@ class ViewController: UIViewController {
     }
     
     @objc func showAlert() {
-        let alert = UIAlertController(title: "API Error", message: "Please Check you network", preferredStyle: .alert)
+        let alert = UIAlertController(title: "API Error", message: "Please Check you network, or contact support@apilayer.com", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: nil)
         alert.addAction(ok)
         DispatchQueue.main.async {

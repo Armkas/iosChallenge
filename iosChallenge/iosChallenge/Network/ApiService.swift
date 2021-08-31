@@ -53,8 +53,10 @@ struct ApiService {
     }
     
     func apiError() {
-        NotificationCenter.default.post(name: Notification.Name("APIError"), object: nil)
-        GlobalData.isSyncing = false
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Notification.Name("APIError"), object: nil)
+            GlobalData.isSyncing = false
+        }
     }
 
 }
